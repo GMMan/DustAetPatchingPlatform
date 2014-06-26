@@ -72,7 +72,8 @@ namespace Troubleshooter
             string mboxMessage = "Your game files are corrupted. ";
             if (Dust.Game1.isSteam)
             {
-                mboxMessage += "Please repair the game files by opening your Steam Library, right clicking on \"Dust: An Elysian Tail\", and click Properties->Local Files->Verify Integrity of Game Cache...";
+                mboxMessage += "Please repair the game files by opening your Steam Library, right clicking on \"Dust: An Elysian Tail\", and click Properties->Local Files->Verify Integrity of Game Cache..." +
+                    Environment.NewLine + Environment.NewLine + "Be sure to reinstall the Patching Platform after verifying cache, because Steam will overwrite it.";
             }
             else
             {
