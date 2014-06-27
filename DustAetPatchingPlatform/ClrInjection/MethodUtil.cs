@@ -24,6 +24,7 @@ namespace NativeAssemblerInjection
             {
                 throw new ArgumentException("The method signatures are not the same.", "source");
             }
+
             ReplaceMethod(GetMethodAddress(source), dest);
         }
 
@@ -34,18 +35,61 @@ namespace NativeAssemblerInjection
         /// <param name="dest">The dest.</param>
         public static void ReplaceMethod(IntPtr srcAdr, MethodBase dest)
         {
-            IntPtr destAdr = GetMethodAddress(dest);
+            IntPtr destAdr = GetMethodAddressRef(dest);
+
             unsafe
             {
                 if (IntPtr.Size == 8)
                 {
                     ulong* d = (ulong*)destAdr.ToPointer();
-                    *d = *((ulong*)srcAdr.ToPointer());
+                    *d = (ulong)srcAdr.ToInt64();
                 }
                 else
                 {
                     uint* d = (uint*)destAdr.ToPointer();
-                    *d = *((uint*)srcAdr.ToPointer());
+                    *d = (uint)srcAdr.ToInt32();
+                }
+            }
+        }
+
+        private static IntPtr GetMethodAddressRef(MethodBase srcMethod)
+        {
+            if ((srcMethod is DynamicMethod))
+            {
+                return GetDynamicMethodAddress(srcMethod);
+            }
+
+            // Prepare the method so it gets jited
+            RuntimeHelpers.PrepareMethod(srcMethod.MethodHandle);
+
+            // If 3.5 sp1 or greater than we have a different layout in memory.
+            if (IsNet20Sp2OrGreater())
+            {
+                return GetMethodAddress20SP2(srcMethod);
+            }
+
+            unsafe
+            {
+                // Skip these
+                const int skip = 10;
+
+                // Read the method index.
+                UInt64* location = (UInt64*)(srcMethod.MethodHandle.Value.ToPointer());
+                int index = (int)(((*location) >> 32) & 0xFF);
+
+                if (IntPtr.Size == 8)
+                {
+                    // Get the method table
+                    ulong* classStart = (ulong*)srcMethod.DeclaringType.TypeHandle.Value.ToPointer();
+                    ulong* address = classStart + index + skip;
+                    return new IntPtr(address);
+                }
+                else
+                {
+                    // Get the method table
+                    uint* classStart = (uint*)srcMethod.DeclaringType.TypeHandle.Value.ToPointer();
+                    uint* address = classStart + index + skip;
+                    return new IntPtr(address);
                 }
             }
         }
@@ -64,38 +108,7 @@ namespace NativeAssemblerInjection
 
             // Prepare the method so it gets jited
             RuntimeHelpers.PrepareMethod(method.MethodHandle);
-
-            // If 3.5 sp1 or greater than we have a different layout in memory.
-            if (IsNet20Sp2OrGreater())
-            {
-                return GetMethodAddress20SP2(method);
-            }
-            
-            
-            unsafe
-            {
-                // Skip these
-                const int skip = 10;
-
-                // Read the method index.
-                UInt64* location = (UInt64*)(method.MethodHandle.Value.ToPointer());
-                int index = (int)(((*location) >> 32) & 0xFF);
-
-                if (IntPtr.Size == 8)
-                {
-                    // Get the method table
-                    ulong* classStart = (ulong*)method.DeclaringType.TypeHandle.Value.ToPointer();
-                    ulong* address = classStart + index + skip;
-                    return new IntPtr(address);
-                }
-                else
-                {
-                    // Get the method table
-                    uint* classStart = (uint*)method.DeclaringType.TypeHandle.Value.ToPointer();
-                    uint* address = classStart + index + skip;
-                    return new IntPtr(address);
-                }
-            }
+            return method.MethodHandle.GetFunctionPointer();
         }
 
         private static IntPtr GetDynamicMethodAddress(MethodBase method)
@@ -104,25 +117,30 @@ namespace NativeAssemblerInjection
             {
                 RuntimeMethodHandle handle = GetDynamicMethodRuntimeHandle(method);
                 byte* ptr = (byte*)handle.Value.ToPointer();
+
                 if (IsNet20Sp2OrGreater())
                 {
                     RuntimeHelpers.PrepareMethod(handle);
-                    if (IntPtr.Size == 8)
-                    {
-                        ulong* address = (ulong*)ptr;
-                        address = (ulong*)*(address + 5);
-                        return new IntPtr(address + 12);
-                    }
-                    else
-                    {
-                        uint* address = (uint*)ptr;
-                        address = (uint*)*(address + 5);
-                        return new IntPtr(address + 12);
-                    }
+                    return handle.GetFunctionPointer();
+                    
+                    //if (IntPtr.Size == 8)
+                    //{
+                    //    ulong* address = (ulong*)ptr;
+                    //    address = (ulong*)*(address + 5);
+                    //    return new IntPtr(address + 12);
+                    //}
+                    //else
+                    //{
+                    //    uint* address = (uint*)ptr;
+                    //    address = (uint*)*(address + 5);
+                    //    return new IntPtr(address + 12);
+                    //}
+                     
                 }
                 else
                 {
-                    
+
+
                     if (IntPtr.Size == 8)
                     {
                         ulong* address = (ulong*)ptr;
@@ -139,17 +157,26 @@ namespace NativeAssemblerInjection
 
             }
         }
+
         private static RuntimeMethodHandle GetDynamicMethodRuntimeHandle(MethodBase method)
         {
-            if (method is DynamicMethod)
+            RuntimeMethodHandle handle;
+
+            if (Environment.Version.Major == 4)
             {
-                FieldInfo fieldInfo = typeof(DynamicMethod).GetField("m_method",BindingFlags.NonPublic|BindingFlags.Instance);
-                RuntimeMethodHandle handle = ((RuntimeMethodHandle)fieldInfo.GetValue(method));
-                
-                return handle;
+                MethodInfo getMethodDescriptorInfo = typeof(DynamicMethod).GetMethod("GetMethodDescriptor",
+                        BindingFlags.NonPublic | BindingFlags.Instance);
+                handle = (RuntimeMethodHandle)getMethodDescriptorInfo.Invoke(method, null);
             }
-            return method.MethodHandle;
+            else
+            {
+                FieldInfo fieldInfo = typeof(DynamicMethod).GetField("m_method", BindingFlags.NonPublic | BindingFlags.Instance);
+                handle = ((RuntimeMethodHandle)fieldInfo.GetValue(method));
+            }
+                
+            return handle;
         }
+
         private static IntPtr GetMethodAddress20SP2(MethodBase method)
         {
             unsafe
@@ -194,8 +221,13 @@ namespace NativeAssemblerInjection
         }
         private static bool IsNet20Sp2OrGreater()
         {
-                return Environment.Version.Major == FrameworkVersions.Net20SP2.Major &&
-                    Environment.Version.MinorRevision >= FrameworkVersions.Net20SP2.MinorRevision;
+            if (Environment.Version.Major == 4)
+            {
+                return true;
+            }
+
+            return Environment.Version.Major == FrameworkVersions.Net20SP2.Major &&
+                Environment.Version.MinorRevision >= FrameworkVersions.Net20SP2.MinorRevision;
         }
     }
 }
