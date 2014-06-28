@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Troubleshooter", "Troublesh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugEnabler", "DebugEnabler\DebugEnabler.csproj", "{CB4451C5-67F4-45A9-84F4-75DB487299BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisableAirSeek", "DisableAirSeek\DisableAirSeek.csproj", "{E11296C9-902A-46BD-8373-4DDB7F1A34F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{CB4451C5-67F4-45A9-84F4-75DB487299BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB4451C5-67F4-45A9-84F4-75DB487299BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB4451C5-67F4-45A9-84F4-75DB487299BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E11296C9-902A-46BD-8373-4DDB7F1A34F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E11296C9-902A-46BD-8373-4DDB7F1A34F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E11296C9-902A-46BD-8373-4DDB7F1A34F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E11296C9-902A-46BD-8373-4DDB7F1A34F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +63,6 @@ Global
 		{A6508076-F1FD-41B6-A800-0C5B08FE907F} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 		{595632A2-BD3D-433F-B1BB-FCDCE8E22FBB} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 		{CB4451C5-67F4-45A9-84F4-75DB487299BE} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
+		{E11296C9-902A-46BD-8373-4DDB7F1A34F5} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 	EndGlobalSection
 EndGlobal
