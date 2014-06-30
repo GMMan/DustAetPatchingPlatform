@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisableAirSeek", "DisableAi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchLang", "SwitchLang\SwitchLang.csproj", "{6C572B22-F886-4CBB-A858-C4D51AB366B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisableDropDespawn", "DisableDropDespawn\DisableDropDespawn.csproj", "{33BFC6DF-7679-4459-9D69-073F5C029949}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{6C572B22-F886-4CBB-A858-C4D51AB366B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C572B22-F886-4CBB-A858-C4D51AB366B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C572B22-F886-4CBB-A858-C4D51AB366B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33BFC6DF-7679-4459-9D69-073F5C029949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33BFC6DF-7679-4459-9D69-073F5C029949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33BFC6DF-7679-4459-9D69-073F5C029949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33BFC6DF-7679-4459-9D69-073F5C029949}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,5 +77,6 @@ Global
 		{CB4451C5-67F4-45A9-84F4-75DB487299BE} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 		{E11296C9-902A-46BD-8373-4DDB7F1A34F5} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 		{6C572B22-F886-4CBB-A858-C4D51AB366B6} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
+		{33BFC6DF-7679-4459-9D69-073F5C029949} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 	EndGlobalSection
 EndGlobal
