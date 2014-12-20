@@ -14,6 +14,7 @@ namespace ExtFullscreenSwitch
     public class FullscreenSwitch : ILoader
     {
         bool ranOnce = false;
+        bool isFullscreen;
 
         public string Name
         {
@@ -32,48 +33,46 @@ namespace ExtFullscreenSwitch
 
         void parseAndSetFullscreen()
         {
+            bool switched = false;
+
             if (!ranOnce)
             {
                 while (Game1.storage == null || Game1.storage.storeResult != Dust.Storage.StoreResult.Loaded) Thread.Sleep(50);
+
+                string[] args = Environment.GetCommandLineArgs();
+                for (int i = 1; i < args.Length && !switched; ++i)
+                {
+                    string arg = args[i].ToUpperInvariant();
+                    if (arg == "/WINDOW")
+                    {
+                        isFullscreen = false;
+                        switched = true;
+                    }
+                    else if (arg == "/FULLSCREEN")
+                    {
+                        isFullscreen = true;
+                        switched = true;
+                    }
+                }
             }
             else
             {
                 while (Game1.menu.curMenuPage < 0) Thread.Sleep(50);
             }
 
-            string[] args = Environment.GetCommandLineArgs();
-            for (int i = 1; i < args.Length; ++i)
+            if (switched || ranOnce)
             {
-                string arg = args[i].ToUpperInvariant();
-                bool switched = false;
-                if (arg == "/WINDOW")
-                {
-                    Game1.settings.FullScreen = Game1.graphics.IsFullScreen = false;
-                    switched = true;
-                }
-                else if (arg == "/FULLSCREEN")
-                {
-                    Game1.settings.FullScreen = Game1.graphics.IsFullScreen = true;
-                    switched = true;
-                }
+                Game1.settings.FullScreen = Game1.graphics.IsFullScreen = isFullscreen;
+                Application.OpenForms[0].Invoke(new Action(Game1.graphics.ApplyChanges));
 
-                if (switched)
+                // Pressing any key reloads settings for some stupid reason.
+                // They're global. Once you've loaded it, you don't need to do it again.
+                // It's not like it's going to change externally.
+                if (!ranOnce)
                 {
-                    // Yank control out of Game1 instance until I can figure out how to find the primary thread
-                    GameWindow window = ((Game)typeof(GraphicsDeviceManager).GetField("game", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(Game1.graphics)).Window;
-                    Form form = (Form)window.GetType().GetProperty("Form", BindingFlags.Instance | BindingFlags.NonPublic).GetGetMethod(true).Invoke(window, null);
-                    form.Invoke(new Action(Game1.graphics.ApplyChanges));
-                    break;
+                    ranOnce = true;
+                    new Thread(parseAndSetFullscreen).Start();
                 }
-            }
-
-            // Pressing any key reloads settings for some stupid reason.
-            // They're global. Once you've loaded it, you don't need to do it again.
-            // It's not like it's going to change externally.
-            if (!ranOnce)
-            {
-                ranOnce = true;
-                new Thread(parseAndSetFullscreen).Start();
             }
         }
     }
