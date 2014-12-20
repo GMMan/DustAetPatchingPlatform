@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DustAetPatchingPlatform", "DustAetPatchingPlatform\DustAetPatchingPlatform.csproj", "{CED53C93-953B-4ADC-B3C3-C9706E748595}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisableDropDespawn", "DisableDropDespawn\DisableDropDespawn.csproj", "{33BFC6DF-7679-4459-9D69-073F5C029949}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disable1HPSave", "Disable1HPSave\Disable1HPSave.csproj", "{89391925-4902-47AD-A55C-6177CD06FA58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtFullscreenSwitch", "ExtFullscreenSwitch\ExtFullscreenSwitch.csproj", "{298F5D8D-BA44-4FF7-BFA5-25915F568C42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{89391925-4902-47AD-A55C-6177CD06FA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89391925-4902-47AD-A55C-6177CD06FA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89391925-4902-47AD-A55C-6177CD06FA58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{298F5D8D-BA44-4FF7-BFA5-25915F568C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{298F5D8D-BA44-4FF7-BFA5-25915F568C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{298F5D8D-BA44-4FF7-BFA5-25915F568C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{298F5D8D-BA44-4FF7-BFA5-25915F568C42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,5 +91,6 @@ Global
 		{6C572B22-F886-4CBB-A858-C4D51AB366B6} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 		{33BFC6DF-7679-4459-9D69-073F5C029949} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 		{89391925-4902-47AD-A55C-6177CD06FA58} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
+		{298F5D8D-BA44-4FF7-BFA5-25915F568C42} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 	EndGlobalSection
 EndGlobal
