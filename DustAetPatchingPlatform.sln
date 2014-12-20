@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disable1HPSave", "Disable1H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtFullscreenSwitch", "ExtFullscreenSwitch\ExtFullscreenSwitch.csproj", "{298F5D8D-BA44-4FF7-BFA5-25915F568C42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuteVoiceActing", "MuteVoiceActing\MuteVoiceActing.csproj", "{1B195E5D-7509-4982-8EB4-8470CD54EF97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{298F5D8D-BA44-4FF7-BFA5-25915F568C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{298F5D8D-BA44-4FF7-BFA5-25915F568C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{298F5D8D-BA44-4FF7-BFA5-25915F568C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B195E5D-7509-4982-8EB4-8470CD54EF97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B195E5D-7509-4982-8EB4-8470CD54EF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B195E5D-7509-4982-8EB4-8470CD54EF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B195E5D-7509-4982-8EB4-8470CD54EF97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,5 +98,6 @@ Global
 		{33BFC6DF-7679-4459-9D69-073F5C029949} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 		{89391925-4902-47AD-A55C-6177CD06FA58} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 		{298F5D8D-BA44-4FF7-BFA5-25915F568C42} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
+		{1B195E5D-7509-4982-8EB4-8470CD54EF97} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 	EndGlobalSection
 EndGlobal
