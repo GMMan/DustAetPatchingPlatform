@@ -64,6 +64,22 @@ namespace Troubleshooter
                     return true;
                 }
             }
+            else if (ex is NotSupportedException)
+            {
+                if (ex.StackTrace.Contains("maximum Texture2D size"))
+                {
+                    MessageBox.Show("Your screen resolution is too high. Please make sure your resolution is no wider and taller than 4096px. If you have multiple monitors, disable one of them.", msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return true;
+                }
+            }
+            else if (ex is ArgumentException)
+            {
+                if (ex.StackTrace.Contains("System.IO.Path.NormalizePath"))
+                {
+                    MessageBox.Show("A Registry value pointing to your Documents folder is incorrect. Please see http://goo.gl/TKKYDg for the fix.", msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return true;
+                }
+            }
             return false;
         }
 
