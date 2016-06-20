@@ -24,7 +24,7 @@ namespace DustAetPatchingPlatform
         /// <summary>
         /// Initializes the platform.
         /// </summary>
-        internal static void InitPlatform()
+        public static void InitPlatform()
         {
             // Static property initialization
             PostInitLoaders = new List<Action>();
