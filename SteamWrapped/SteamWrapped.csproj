@@ -48,6 +48,7 @@
     <ProjectReference Include="..\DustAetPatchingPlatform\DustAetPatchingPlatform.csproj">
       <Project>{ced53c93-953b-4adc-b3c3-c9706e748595}</Project>
       <Name>DustAetPatchingPlatform</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
