@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DustAetPatchingPlatform", "DustAetPatchingPlatform\DustAetPatchingPlatform.csproj", "{CED53C93-953B-4ADC-B3C3-C9706E748595}"
 EndProject
@@ -28,6 +28,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtFullscreenSwitch", "ExtFullscreenSwitch\ExtFullscreenSwitch.csproj", "{298F5D8D-BA44-4FF7-BFA5-25915F568C42}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuteVoiceActing", "MuteVoiceActing\MuteVoiceActing.csproj", "{1B195E5D-7509-4982-8EB4-8470CD54EF97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamWrapped", "SteamWrapped\SteamWrapped.csproj", "{F700FFDB-447E-46AF-9C20-DE5C34802844}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartsWrapped", "PartsWrapped\PartsWrapped.csproj", "{2DF89566-4F3C-4AE6-8065-51936B013354}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +87,14 @@ Global
 		{1B195E5D-7509-4982-8EB4-8470CD54EF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B195E5D-7509-4982-8EB4-8470CD54EF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B195E5D-7509-4982-8EB4-8470CD54EF97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F700FFDB-447E-46AF-9C20-DE5C34802844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F700FFDB-447E-46AF-9C20-DE5C34802844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F700FFDB-447E-46AF-9C20-DE5C34802844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F700FFDB-447E-46AF-9C20-DE5C34802844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DF89566-4F3C-4AE6-8065-51936B013354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DF89566-4F3C-4AE6-8065-51936B013354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DF89566-4F3C-4AE6-8065-51936B013354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DF89566-4F3C-4AE6-8065-51936B013354}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
