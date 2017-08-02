@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DustAetPatchingPlatform", "DustAetPatchingPlatform\DustAetPatchingPlatform.csproj", "{CED53C93-953B-4ADC-B3C3-C9706E748595}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamWrapped", "SteamWrapped\SteamWrapped.csproj", "{F700FFDB-447E-46AF-9C20-DE5C34802844}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartsWrapped", "PartsWrapped\PartsWrapped.csproj", "{2DF89566-4F3C-4AE6-8065-51936B013354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverheatDisabler", "OverheatDisabler\OverheatDisabler.csproj", "{98951C82-57C7-4C76-88AA-78D73856ABE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,10 @@ Global
 		{2DF89566-4F3C-4AE6-8065-51936B013354}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DF89566-4F3C-4AE6-8065-51936B013354}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DF89566-4F3C-4AE6-8065-51936B013354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98951C82-57C7-4C76-88AA-78D73856ABE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98951C82-57C7-4C76-88AA-78D73856ABE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98951C82-57C7-4C76-88AA-78D73856ABE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98951C82-57C7-4C76-88AA-78D73856ABE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,5 +117,6 @@ Global
 		{89391925-4902-47AD-A55C-6177CD06FA58} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 		{298F5D8D-BA44-4FF7-BFA5-25915F568C42} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 		{1B195E5D-7509-4982-8EB4-8470CD54EF97} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
+		{98951C82-57C7-4C76-88AA-78D73856ABE9} = {A1F59A05-B665-4DFD-94AC-78AB8DDC7EAD}
 	EndGlobalSection
 EndGlobal
